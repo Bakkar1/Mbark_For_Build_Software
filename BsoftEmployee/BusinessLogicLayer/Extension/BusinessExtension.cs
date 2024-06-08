@@ -25,6 +25,7 @@ namespace BusinessLogicLayer.Extension
             services.AddTransient<IRequestHandler<CreateConstructionSiteCommand, ConstructionSiteDTO>, CreateConstructionSiteCommandHandler>();
             services.AddTransient<IRequestHandler<DeleteConstructionSiteCommand>, DeleteConstructionSiteCommandHandler>();
             services.AddTransient<IRequestHandler<UpdateConstructionSiteCommand, ConstructionSiteDTO>, UpdateConstructionSiteCommandHandler>();
+            services.AddTransient<IRequestHandler<AddEmployeeToSiteCommand, bool>, AddEmployeeToSiteCommandHandler>();
 
             // Queries
             services.AddTransient<IRequestHandler<GetAllConstructionSitesQuery, List<ConstructionSiteDTO>?>, GetAllConstructionSitesQueryHandler>();

@@ -1,16 +1,7 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "C:\\Users\\mbark\\Documents\\GitHub\\Mbark_For_Build_Software\\BsoftEmployee\\",
-  "Documents": [
-    {
-      "AbsoluteMoniker": "D:0:0:{13F5B36B-7B50-4208-B3A6-347B77795D38}|DataAccessLayer\\DataAccessLayer.csproj|c:\\users\\mbark\\documents\\github\\mbark_for_build_software\\bsoftemployee\\dataaccesslayer\\extension\\enumextensions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{13F5B36B-7B50-4208-B3A6-347B77795D38}|DataAccessLayer\\DataAccessLayer.csproj|solutionrelative:dataaccesslayer\\extension\\enumextensions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{1199B1D7-04F5-4277-B510-F0C6434BEC9F}|BusinessLogicLayer\\BusinessLogicLayer.csproj|c:\\users\\mbark\\documents\\github\\mbark_for_build_software\\bsoftemployee\\businesslogiclayer\\features\\queries\\getallconstructionsitesquery.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{1199B1D7-04F5-4277-B510-F0C6434BEC9F}|BusinessLogicLayer\\BusinessLogicLayer.csproj|solutionrelative:businesslogiclayer\\features\\queries\\getallconstructionsitesquery.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    }
-  ],
+  "Documents": [],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
@@ -18,7 +9,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 5,
+          "SelectedChildIndex": -1,
           "Children": [
             {
               "$type": "Bookmark",
@@ -35,32 +26,6 @@
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "GetAllConstructionSitesQuery.cs",
-              "DocumentMoniker": "C:\\Users\\mbark\\Documents\\GitHub\\Mbark_For_Build_Software\\BsoftEmployee\\BusinessLogicLayer\\Features\\Queries\\GetAllConstructionSitesQuery.cs",
-              "RelativeDocumentMoniker": "BusinessLogicLayer\\Features\\Queries\\GetAllConstructionSitesQuery.cs",
-              "ToolTip": "C:\\Users\\mbark\\Documents\\GitHub\\Mbark_For_Build_Software\\BsoftEmployee\\BusinessLogicLayer\\Features\\Queries\\GetAllConstructionSitesQuery.cs",
-              "RelativeToolTip": "BusinessLogicLayer\\Features\\Queries\\GetAllConstructionSitesQuery.cs",
-              "ViewState": "AQIAABUAAAAAAAAAAAAowCIAAAAxAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-08T14:19:05.604Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "EnumExtensions.cs",
-              "DocumentMoniker": "C:\\Users\\mbark\\Documents\\GitHub\\Mbark_For_Build_Software\\BsoftEmployee\\DataAccessLayer\\Extension\\EnumExtensions.cs",
-              "RelativeDocumentMoniker": "DataAccessLayer\\Extension\\EnumExtensions.cs",
-              "ToolTip": "C:\\Users\\mbark\\Documents\\GitHub\\Mbark_For_Build_Software\\BsoftEmployee\\DataAccessLayer\\Extension\\EnumExtensions.cs",
-              "RelativeToolTip": "DataAccessLayer\\Extension\\EnumExtensions.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAqwA8AAAANAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-08T14:14:17.605Z",
-              "EditorCaption": ""
             }
           ]
         }
