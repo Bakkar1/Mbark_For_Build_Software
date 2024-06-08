@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
 using DataAccessLayer.Data;
 using DataAccessLayer.DTOs;
-using DataAccessLayer.Model;
+using DataAccessLayer.Extension;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 
@@ -24,8 +24,16 @@ public class GetAllConstructionSitesQueryHandler : IRequestHandler<GetAllConstru
 
     public async Task<List<ConstructionSiteDTO>?> Handle(GetAllConstructionSitesQuery request, CancellationToken cancellationToken)
     {
-        var result = await _context.ConstructionSites.ToListAsync(cancellationToken);
-
-        return _mapper.Map<List<ConstructionSiteDTO>>(result);
+        return await _context
+            .ConstructionSites
+            .Select(cs => new ConstructionSiteDTO()
+            {
+                ConstructionSiteId = cs.ConstructionSiteId,
+                Name = cs.Name,
+                StartDate = cs.StartDate.ToLongDateString(),
+                EndDate = cs.EndDate.ToLongDateString(),
+                Status = cs.Status.GetDisplayName()
+            })
+            .ToListAsync(cancellationToken);
     }
 }

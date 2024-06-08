@@ -1,6 +1,8 @@
 ﻿using AutoMapper;
 using DataAccessLayer.Data;
 using DataAccessLayer.DTOs;
+using DataAccessLayer.Enums;
+using DataAccessLayer.Extension;
 using DataAccessLayer.Model;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
@@ -15,20 +17,40 @@ namespace BusinessLogicLayer.Features.Queries
     public class GetConstructionSiteByIdQueryHandler : IRequestHandler<GetConstructionSiteByIdQuery, ConstructionSiteDTO?>
     {
         private readonly AppDbContext _context;
-        private readonly IMapper _mapper;
+        
 
-        public GetConstructionSiteByIdQueryHandler(AppDbContext context, IMapper mapper)
+        public GetConstructionSiteByIdQueryHandler(AppDbContext context)
         {
             _context = context;
-            _mapper = mapper;
         }
 
         public async Task<ConstructionSiteDTO?> Handle(GetConstructionSiteByIdQuery request, CancellationToken cancellationToken)
         {
-            var constructionSite = await _context
+            var constructionSiteDTO = await _context
                 .ConstructionSites
-                .FirstOrDefaultAsync(cs =>  cs.ConstructionSiteId == request.GetConstructionSiteId,cancellationToken);
-            return _mapper.Map<ConstructionSiteDTO>(constructionSite);
+                .Where(cs => cs.ConstructionSiteId == request.GetConstructionSiteId)
+                .Select(cs => new ConstructionSiteDTO()
+                {
+                    ConstructionSiteId = cs.ConstructionSiteId,
+                    Name = cs.Name,
+                    StartDate = cs.StartDate.ToLongDateString(),
+                    EndDate = cs.EndDate.ToLongDateString(),
+                    Status = cs.Status.GetDisplayName(),
+                    Employees = cs.ConstructionSiteEmployees
+                        .Where(cse => cse.Employee != null)
+                        .Select(cse => new EmployeeDTO()
+                        {
+                            EmployeeId = cse.Employee.Id,
+                            Name = cse.Employee.FirstName, 
+                            Role = cse.Employee.Role.GetDisplayName(),
+                        })
+                        .ToList(),
+                })
+                .FirstOrDefaultAsync(cancellationToken);
+
+            return constructionSiteDTO;
         }
+
     }
+
 }

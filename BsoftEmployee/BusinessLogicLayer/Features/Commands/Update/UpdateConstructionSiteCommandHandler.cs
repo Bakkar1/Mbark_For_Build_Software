@@ -1,4 +1,5 @@
-﻿using DataAccessLayer.Data;
+﻿using AutoMapper;
+using DataAccessLayer.Data;
 using DataAccessLayer.DTOs;
 using MediatR;
 
@@ -6,10 +7,12 @@ namespace BusinessLogicLayer.Features.Commands.Update;
 public class UpdateConstructionSiteCommandHandler : IRequestHandler<UpdateConstructionSiteCommand, ConstructionSiteDTO>
 {
     private readonly AppDbContext _context;
+    private readonly IMapper _mapper;
 
-    public UpdateConstructionSiteCommandHandler(AppDbContext context)
+    public UpdateConstructionSiteCommandHandler(AppDbContext context, IMapper mapper)
     {
         _context = context;
+        _mapper = mapper;
     }
 
     public async Task<ConstructionSiteDTO> Handle(UpdateConstructionSiteCommand request, CancellationToken cancellationToken)
@@ -25,13 +28,6 @@ public class UpdateConstructionSiteCommandHandler : IRequestHandler<UpdateConstr
 
         await _context.SaveChangesAsync(cancellationToken);
 
-        return new ConstructionSiteDTO
-        {
-            ConstructionSiteId = constructionSite.ConstructionSiteId,
-            Name = constructionSite.Name,
-            StartDate = constructionSite.StartDate,
-            EndDate = constructionSite.EndDate,
-            Status = constructionSite.Status
-        };
+        return _mapper.Map<ConstructionSiteDTO>(constructionSite);
     }
 }

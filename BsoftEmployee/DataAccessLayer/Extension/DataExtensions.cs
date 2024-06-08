@@ -6,6 +6,7 @@ using DataAccessLayer.Model;
 using DataAccessLayer.Profiles;
 using DataAccessLayer.Data.Default;
 using Microsoft.AspNetCore.Identity;
+using static System.Formats.Asn1.AsnWriter;
 
 namespace DataAccessLayer.Extension
 {
@@ -17,10 +18,9 @@ namespace DataAccessLayer.Extension
             services.AddAutoMapper(typeof(MappingProfile));
 
             // Other services
-            //string conString = "server=(localdb)\\MSSQLLocalDB;database=bsoftdatabase;Trusted_Connection=true;MultipleActiveResultSets = true";
             string conString = configuration.GetConnectionString("DefaultConnection");
             services.AddDbContextPool<AppDbContext>(
-                        options => options.UseSqlServer(conString)//configuration.GetConnectionString("YsserConnString"))
+                        options => options.UseSqlServer(conString)
                     );
 
 
@@ -48,9 +48,7 @@ namespace DataAccessLayer.Extension
             // Seed initial data
             using (var serviceScope = services.BuildServiceProvider().CreateScope())
             {
-                var dbContext = serviceScope.ServiceProvider.GetRequiredService<AppDbContext>();
-                var userManager = serviceScope.ServiceProvider.GetRequiredService<UserManager<Employee>>();
-                DataSeeder.SeedData(dbContext, userManager);
+                _ = DataSeeder.SeedDataAsync(serviceScope.ServiceProvider);
             }
 
             return services;

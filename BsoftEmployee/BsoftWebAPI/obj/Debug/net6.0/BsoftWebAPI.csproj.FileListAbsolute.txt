@@ -48,7 +48,12 @@ C:\Users\mbark\Documents\GitHub\Mbark_For_Build_Software\BsoftEmployee\BsoftWebA
 C:\Users\mbark\Documents\GitHub\Mbark_For_Build_Software\BsoftEmployee\BsoftWebAPI\bin\Debug\net6.0\runtimes\win-arm64\native\Microsoft.Data.SqlClient.SNI.dll
 C:\Users\mbark\Documents\GitHub\Mbark_For_Build_Software\BsoftEmployee\BsoftWebAPI\bin\Debug\net6.0\runtimes\win-x64\native\Microsoft.Data.SqlClient.SNI.dll
 C:\Users\mbark\Documents\GitHub\Mbark_For_Build_Software\BsoftEmployee\BsoftWebAPI\bin\Debug\net6.0\runtimes\win-x86\native\Microsoft.Data.SqlClient.SNI.dll
+C:\Users\mbark\Documents\GitHub\Mbark_For_Build_Software\BsoftEmployee\BsoftWebAPI\bin\Debug\net6.0\runtimes\win\lib\netcoreapp3.0\Microsoft.Win32.SystemEvents.dll
+C:\Users\mbark\Documents\GitHub\Mbark_For_Build_Software\BsoftEmployee\BsoftWebAPI\bin\Debug\net6.0\runtimes\unix\lib\netcoreapp3.0\System.Drawing.Common.dll
+C:\Users\mbark\Documents\GitHub\Mbark_For_Build_Software\BsoftEmployee\BsoftWebAPI\bin\Debug\net6.0\runtimes\win\lib\netcoreapp3.0\System.Drawing.Common.dll
 C:\Users\mbark\Documents\GitHub\Mbark_For_Build_Software\BsoftEmployee\BsoftWebAPI\bin\Debug\net6.0\runtimes\win\lib\netstandard2.0\System.Runtime.Caching.dll
+C:\Users\mbark\Documents\GitHub\Mbark_For_Build_Software\BsoftEmployee\BsoftWebAPI\bin\Debug\net6.0\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
+C:\Users\mbark\Documents\GitHub\Mbark_For_Build_Software\BsoftEmployee\BsoftWebAPI\bin\Debug\net6.0\runtimes\win\lib\netcoreapp3.0\System.Windows.Extensions.dll
 C:\Users\mbark\Documents\GitHub\Mbark_For_Build_Software\BsoftEmployee\BsoftWebAPI\bin\Debug\net6.0\BusinessLogicLayer.dll
 C:\Users\mbark\Documents\GitHub\Mbark_For_Build_Software\BsoftEmployee\BsoftWebAPI\bin\Debug\net6.0\DataAccessLayer.dll
 C:\Users\mbark\Documents\GitHub\Mbark_For_Build_Software\BsoftEmployee\BsoftWebAPI\bin\Debug\net6.0\BusinessLogicLayer.pdb
@@ -75,8 +80,3 @@ C:\Users\mbark\Documents\GitHub\Mbark_For_Build_Software\BsoftEmployee\BsoftWebA
 C:\Users\mbark\Documents\GitHub\Mbark_For_Build_Software\BsoftEmployee\BsoftWebAPI\obj\Debug\net6.0\BsoftWebAPI.pdb
 C:\Users\mbark\Documents\GitHub\Mbark_For_Build_Software\BsoftEmployee\BsoftWebAPI\obj\Debug\net6.0\BsoftWebAPI.genruntimeconfig.cache
 C:\Users\mbark\Documents\GitHub\Mbark_For_Build_Software\BsoftEmployee\BsoftWebAPI\obj\Debug\net6.0\ref\BsoftWebAPI.dll
-C:\Users\mbark\Documents\GitHub\Mbark_For_Build_Software\BsoftEmployee\BsoftWebAPI\bin\Debug\net6.0\runtimes\win\lib\netcoreapp3.0\Microsoft.Win32.SystemEvents.dll
-C:\Users\mbark\Documents\GitHub\Mbark_For_Build_Software\BsoftEmployee\BsoftWebAPI\bin\Debug\net6.0\runtimes\unix\lib\netcoreapp3.0\System.Drawing.Common.dll
-C:\Users\mbark\Documents\GitHub\Mbark_For_Build_Software\BsoftEmployee\BsoftWebAPI\bin\Debug\net6.0\runtimes\win\lib\netcoreapp3.0\System.Drawing.Common.dll
-C:\Users\mbark\Documents\GitHub\Mbark_For_Build_Software\BsoftEmployee\BsoftWebAPI\bin\Debug\net6.0\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
-C:\Users\mbark\Documents\GitHub\Mbark_For_Build_Software\BsoftEmployee\BsoftWebAPI\bin\Debug\net6.0\runtimes\win\lib\netcoreapp3.0\System.Windows.Extensions.dll

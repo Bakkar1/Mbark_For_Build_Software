@@ -2,16 +2,18 @@
 using DataAccessLayer.Data;
 using DataAccessLayer.DTOs;
 using DataAccessLayer.Model;
+using AutoMapper;
 
 namespace BusinessLogicLayer.Features.Commands.Add;
 
 public class CreateConstructionSiteCommandHandler : IRequestHandler<CreateConstructionSiteCommand, ConstructionSiteDTO>
 {
     private readonly AppDbContext _context;
-
-    public CreateConstructionSiteCommandHandler(AppDbContext context)
+    private readonly IMapper _mapper;
+    public CreateConstructionSiteCommandHandler(AppDbContext context, IMapper mapper)
     {
         _context = context;
+        _mapper = mapper;
     }
 
     public async Task<ConstructionSiteDTO> Handle(CreateConstructionSiteCommand request, CancellationToken cancellationToken)
@@ -20,24 +22,11 @@ public class CreateConstructionSiteCommandHandler : IRequestHandler<CreateConstr
         {
             // Handle not found
         }
-        var constructionSite = new ConstructionSite
-        {
-            Name = request.ConstructionSite.Name,
-            StartDate = request.ConstructionSite.StartDate,
-            EndDate = request.ConstructionSite.EndDate,
-            Status = request.ConstructionSite.Status
-        };
+        var constructionSite = _mapper.Map<ConstructionSite>(request.ConstructionSite);
 
         _context.ConstructionSites.Add(constructionSite);
         await _context.SaveChangesAsync(cancellationToken);
 
-        return new ConstructionSiteDTO
-        {
-            ConstructionSiteId = constructionSite.ConstructionSiteId,
-            Name = constructionSite.Name,
-            StartDate = constructionSite.StartDate,
-            EndDate = constructionSite.EndDate,
-            Status = constructionSite.Status
-        };
+        return _mapper.Map<ConstructionSiteDTO>(constructionSite);
     }
 }
