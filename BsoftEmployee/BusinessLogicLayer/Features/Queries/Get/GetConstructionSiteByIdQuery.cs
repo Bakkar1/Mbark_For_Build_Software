@@ -7,7 +7,7 @@ using DataAccessLayer.Model;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 
-namespace BusinessLogicLayer.Features.Queries
+namespace BusinessLogicLayer.Features.Queries.Get
 {
     public class GetConstructionSiteByIdQuery : IRequest<ConstructionSiteDTO?>
     {
@@ -17,7 +17,7 @@ namespace BusinessLogicLayer.Features.Queries
     public class GetConstructionSiteByIdQueryHandler : IRequestHandler<GetConstructionSiteByIdQuery, ConstructionSiteDTO?>
     {
         private readonly AppDbContext _context;
-        
+
 
         public GetConstructionSiteByIdQueryHandler(AppDbContext context)
         {
@@ -41,7 +41,7 @@ namespace BusinessLogicLayer.Features.Queries
                         .Select(cse => new EmployeeDTO()
                         {
                             EmployeeId = cse.Employee.Id,
-                            Name = cse.Employee.FirstName, 
+                            Name = cse.Employee.FirstName,
                             Role = cse.Employee.Role.GetDisplayName(),
                         })
                         .ToList(),

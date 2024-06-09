@@ -1,4 +1,5 @@
 using BsoftWebAPI.Extension;
+using BsoftWebAPI.Middleware;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -23,6 +24,9 @@ if (app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 
 app.UseAuthorization();
+
+// Add the API Key Middleware
+app.UseMiddleware<ApiKeyMiddleware>();
 
 app.MapControllers();
 

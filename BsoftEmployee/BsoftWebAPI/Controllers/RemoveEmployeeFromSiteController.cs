@@ -1,60 +1,56 @@
-﻿using BusinessLogicLayer.Features.Commands.Add;
+﻿using BusinessLogicLayer.Features.Commands.Delete;
 using DataAccessLayer.DTOs;
 using MediatR;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BsoftWebAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class ConstructionSiteEmployeeController : ControllerBase
+    public class RemoveEmployeeFromSiteController : ControllerBase
     {
         private readonly IMediator _mediator;
 
-        public ConstructionSiteEmployeeController(IMediator mediator)
+        public RemoveEmployeeFromSiteController(IMediator mediator)
         {
             _mediator = mediator;
         }
 
-        [HttpPost]
-        public async Task<IActionResult> AddEmployeeToSite([FromBody] AddEmployeeToSiteDTO model)
+        [HttpDelete]
+        public async Task<IActionResult> RemoveEmployeeFromSite([FromBody] RemoveEmployeeFromSiteCommand command)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
-
-            var command = new AddEmployeeToSiteCommand()
-            {
-                ConstructionSiteId = model.ConstructionSiteId,
-                EmployeeId = model.EmployeeId
-            };
 
             var result = await _mediator.Send(command);
 
             if (!result)
             {
-                return NotFound("Construction site or one or more employees not found.");
+                return NotFound("Construction site or employee not found.");
             }
 
-            return Ok("Employee added to construction site.");
+            return Ok("Employee removed from construction site.");
         }
-
-        [HttpPost("add-employees")]
-        public async Task<IActionResult> AddEmployeesToSite([FromBody] AddEmployeesToSiteDTO model)
+        [HttpDelete("remove-employees")]
+        public async Task<IActionResult> RemoveEmployeesFromSite([FromBody] RemoveEmployeesFromSiteDTO model)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
+            else if(model.EmployeeIds is null || !model.EmployeeIds.Any())
+            {
+                return BadRequest();
+            }
 
-            AddEmployeeToSiteCommand command;
+            RemoveEmployeeFromSiteCommand command;
             int constructionSiteId = model.ConstructionSiteId;
 
             foreach (var employeeId in model.EmployeeIds)
             {
-                command = new AddEmployeeToSiteCommand()
+                command = new RemoveEmployeeFromSiteCommand()
                 {
                     ConstructionSiteId = constructionSiteId,
                     EmployeeId = employeeId
@@ -67,7 +63,7 @@ namespace BsoftWebAPI.Controllers
                 }
             }
 
-            return Ok("Employees added to construction site.");
+            return Ok("Employee removed from construction site.");
         }
     }
 }

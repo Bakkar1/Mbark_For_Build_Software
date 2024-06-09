@@ -5,8 +5,9 @@ namespace DataAccessLayer.Model;
 
 public class ConstructionSiteEmployee
 {
-    [Required]
     [Key]
+    public int ConstructionSiteEmployeeId { get; set; }
+    [Required]
     public int ConstructionSiteId { get; set; }
     [ForeignKey(nameof(ConstructionSiteId))]
     public ConstructionSite? ConstructionSite { get; set; }

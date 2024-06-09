@@ -5,7 +5,7 @@ using DataAccessLayer.Extension;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 
-namespace BusinessLogicLayer.Features.Queries;
+namespace BusinessLogicLayer.Features.Queries.Get;
 
 public class GetAllConstructionSitesQuery : IRequest<List<ConstructionSiteDTO>?>
 {

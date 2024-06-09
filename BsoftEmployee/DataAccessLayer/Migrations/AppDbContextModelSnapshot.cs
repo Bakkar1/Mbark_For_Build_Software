@@ -56,6 +56,9 @@ namespace DataAccessLayer.Migrations
                     b.Property<string>("EmployeeId")
                         .HasColumnType("nvarchar(450)");
 
+                    b.Property<int>("ConstructionSiteEmployeeId")
+                        .HasColumnType("int");
+
                     b.HasKey("ConstructionSiteId", "EmployeeId");
 
                     b.HasIndex("EmployeeId");
@@ -108,6 +111,9 @@ namespace DataAccessLayer.Migrations
 
                     b.Property<bool>("PhoneNumberConfirmed")
                         .HasColumnType("bit");
+
+                    b.Property<int>("Role")
+                        .HasColumnType("int");
 
                     b.Property<string>("SecurityStamp")
                         .HasColumnType("nvarchar(max)");
