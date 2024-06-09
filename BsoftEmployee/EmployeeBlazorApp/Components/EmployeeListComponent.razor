@@ -1,0 +1,60 @@
+﻿@inject IMediator _mediator
+
+@if (employees.Any())
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>EmployeeId</th>
+                <th>First Name</th>
+                <th>Role</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var employee in employees)
+            {
+                <tr>
+                    <td>@employee.EmployeeId</td>
+                    <td>@employee.Name</td>
+                    <td>@employee.Role</td>
+                    <td>
+                        <!--
+                        <a class="btn btn-primary" href="/update-employee/@employee.EmployeeId">Edit</a>
+                        <a class="btn btn-info" href="/employee-details/@employee.EmployeeId">Details</a>
+                        -->
+                        <button class="btn btn-danger" @onclick="() => Deleteemployee(employee.EmployeeId)">Delete</button>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <p class="text-warning">No Employees Found!</p>
+}
+
+@code {
+    [Parameter]
+    public List<EmployeeDTO> employees { get; set; } = new();
+
+    private async Task Deleteemployee(string employeeId)
+    {
+        var command = new DeleteEmployeeCommand { EmployeeId = employeeId };
+        var result = await _mediator.Send(command);
+
+        if (result)
+        {
+            var employeeToRemove = employees.FirstOrDefault(e => e.EmployeeId == employeeId);
+            if (employeeToRemove != null)
+            {
+                employees.Remove(employeeToRemove);
+            }
+        }
+        else
+        {
+            // Handle error
+        }
+    }
+}

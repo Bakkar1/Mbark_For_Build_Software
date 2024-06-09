@@ -1,7 +1,7 @@
 ﻿using MediatR;
 using System.ComponentModel.DataAnnotations;
 
-namespace BusinessLogicLayer.Features.Commands.DeleteUser
+namespace BusinessLogicLayer.Features.Commands.Delete
 {
     public class DeleteEmployeeCommand : IRequest<bool>
     {

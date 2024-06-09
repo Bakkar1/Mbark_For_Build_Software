@@ -9,7 +9,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BusinessLogicLayer", "Busin
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataAccessLayer", "DataAccessLayer\DataAccessLayer.csproj", "{13F5B36B-7B50-4208-B3A6-347B77795D38}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BsoftWebAPI", "BsoftWebAPI\BsoftWebAPI.csproj", "{C28B41B0-A4B8-4CD6-B98F-92393DD01AD3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BsoftWebAPI", "BsoftWebAPI\BsoftWebAPI.csproj", "{C28B41B0-A4B8-4CD6-B98F-92393DD01AD3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

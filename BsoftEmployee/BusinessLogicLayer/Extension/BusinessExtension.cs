@@ -2,16 +2,13 @@
 using Microsoft.Extensions.DependencyInjection;
 using DataAccessLayer.Extension;
 using MediatR;
-using DataAccessLayer.Model;
 using BusinessLogicLayer.Features.Commands.Add;
 using DataAccessLayer.DTOs;
 using BusinessLogicLayer.Features.Commands.Delete;
 using BusinessLogicLayer.Features.Commands.Update;
 using System.Reflection;
 using Microsoft.AspNetCore.Identity;
-using BusinessLogicLayer.Features.Commands.DeleteUser;
 using BusinessLogicLayer.Features.Queries.Get;
-using BusinessLogicLayer.Features.Queries.GetUsers;
 
 namespace BusinessLogicLayer.Extension
 {

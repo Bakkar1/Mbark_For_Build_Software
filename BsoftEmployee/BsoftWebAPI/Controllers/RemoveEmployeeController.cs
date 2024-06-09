@@ -1,4 +1,4 @@
-﻿using BusinessLogicLayer.Features.Commands.DeleteUser;
+﻿using BusinessLogicLayer.Features.Commands.Delete;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 

@@ -1,0 +1,61 @@
+﻿@page "/add-employee"
+@using DataAccessLayer.Extension
+@inject NavigationManager Navigation
+@inject IMediator _mediator
+
+<EditForm Model="@employeeModel" OnValidSubmit="AddDotNetEmployee">
+    <DataAnnotationsValidator />
+    <ValidationSummary />
+
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-md-6 offset-md-3">
+                <div class="mb-3">
+                    <label for="firstName" class="form-label">First Name</label>
+                    <InputText @bind-Value="employeeModel.FirstName" class="form-control" id="firstName" />
+                </div>
+                <div class="mb-3">
+                    <label for="email" class="form-label">Email</label>
+                    <InputText @bind-Value="employeeModel.Email" class="form-control" id="email" />
+                </div>
+                <div class="mb-3">
+                    <label for="password" class="form-label">Password</label>
+                    <InputText @bind-Value="employeeModel.Password" class="form-control" id="password" type="password" />
+                </div>
+                <div class="mb-3">
+                    <label for="role" class="form-label">Role</label>
+                    <InputSelect @bind-Value="employeeModel.Role" class="form-control" id="role">
+                        <option value="@EmployeeRole.Mason">@EmployeeRole.Mason.GetDisplayName()</option>
+                        <option value="@EmployeeRole.Carpenter">@EmployeeRole.Carpenter.GetDisplayName()</option>
+                        <option value="@EmployeeRole.Administration">@EmployeeRole.Administration.GetDisplayName()</option>
+                        <option value="@EmployeeRole.Manager">@EmployeeRole.Manager.GetDisplayName()</option>
+                    </InputSelect>
+                </div>
+                <button type="submit" class="btn btn-primary w-100">Add</button>
+            </div>
+        </div>
+    </div>
+</EditForm>
+
+@code {
+    private CreateEmployeeDTO employeeModel = new();
+
+    private async Task AddDotNetEmployee()
+    {
+        var command = new AddEmployeeCommand { Employee = employeeModel };
+        var result = await _mediator.Send(command);
+
+        if (result.Succeeded)
+        {
+            Navigation.NavigateTo("/employee");
+        }
+        else
+        {
+            foreach (var error in result.Errors)
+            {
+                // Handle the error (display to employee, log, etc.)
+                Console.WriteLine(error.Description);
+            }
+        }
+    }
+}

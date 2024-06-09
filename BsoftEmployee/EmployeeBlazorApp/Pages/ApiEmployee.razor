@@ -1,0 +1,33 @@
+﻿@page "/api-employee"
+@inject IMediator _mediator
+@using EmployeeBlazorApp.Components;
+@inject IHttpClientFactory HttpClientFactory
+
+
+<h3 class="mt-4 text-center">Api Employees</h3>
+<a class="btn btn-primary" href="add-employee">Add New Employee</a>
+
+<EmployeeListComponent employees="employees" />
+
+@code {
+    private List<EmployeeDTO>? employees = new();
+
+    protected override async Task OnInitializedAsync()
+    {
+        await LoadEmployees();
+    }
+
+    private async Task LoadEmployees()
+    {
+        try
+        {
+            var client = HttpClientFactory.CreateClient("ApiHttpClient");
+            employees = await client.GetFromJsonAsync<List<EmployeeDTO>>("api/GetEmployee");
+        }
+        catch (Exception ex)
+        {
+            // Handle error (e.g., log the error, show a message to the user, etc.)
+            Console.WriteLine($"Error loading employees: {ex.Message}");
+        }
+    }
+}

@@ -1,0 +1,23 @@
+﻿@page "/employee"
+@inject IMediator _mediator
+@using EmployeeBlazorApp.Components;
+
+<h3 class="mt-4 text-center">Employees</h3>
+<a class="btn btn-primary" href="add-employee">Add New Employee</a>
+
+<EmployeeListComponent employees="employees"/>
+
+@code {
+    private List<EmployeeDTO>? employees = new();
+
+    protected override async Task OnInitializedAsync()
+    {
+        await LoadEmployees();
+    }
+
+    private async Task LoadEmployees()
+    {
+        var query = new GetAllEmployeesQuery();
+        employees = await _mediator.Send(query);
+    }
+}

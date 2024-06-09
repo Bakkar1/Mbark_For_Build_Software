@@ -1,6 +1,5 @@
 ﻿using BsoftWebAPI.AuthorizeAttribute;
 using BusinessLogicLayer.Features.Queries.Get;
-using BusinessLogicLayer.Features.Queries.GetUsers;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 

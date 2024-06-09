@@ -4,7 +4,7 @@ using DataAccessLayer.Extension;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 
-namespace BusinessLogicLayer.Features.Queries.GetUsers
+namespace BusinessLogicLayer.Features.Queries.Get
 {
     public class GetAllEmployeesQuery : IRequest<List<EmployeeDTO>?>
     {

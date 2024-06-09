@@ -1,5 +1,4 @@
-﻿using BusinessLogicLayer.Features.Commands.DeleteUser;
-using DataAccessLayer.Data;
+﻿using DataAccessLayer.Data;
 using DataAccessLayer.Enums;
 using MediatR;
 using Microsoft.EntityFrameworkCore;

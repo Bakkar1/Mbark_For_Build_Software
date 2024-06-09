@@ -22,8 +22,24 @@ build_property._RazorSourceGeneratorDebug =
 build_metadata.AdditionalFiles.TargetPath = QXBwLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/mbark/Documents/GitHub/Mbark_For_Build_Software/BsoftEmployee/EmployeeBlazorApp/Components/EmployeeListComponent.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xFbXBsb3llZUxpc3RDb21wb25lbnQucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/mbark/Documents/GitHub/Mbark_For_Build_Software/BsoftEmployee/EmployeeBlazorApp/Pages/AddEmployee.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRkRW1wbG95ZWUucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/mbark/Documents/GitHub/Mbark_For_Build_Software/BsoftEmployee/EmployeeBlazorApp/Pages/ApiEmployee.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQXBpRW1wbG95ZWUucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/mbark/Documents/GitHub/Mbark_For_Build_Software/BsoftEmployee/EmployeeBlazorApp/Pages/Counter.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ291bnRlci5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/mbark/Documents/GitHub/Mbark_For_Build_Software/BsoftEmployee/EmployeeBlazorApp/Pages/EmployeeControl.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRW1wbG95ZWVDb250cm9sLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/mbark/Documents/GitHub/Mbark_For_Build_Software/BsoftEmployee/EmployeeBlazorApp/Pages/FetchData.razor]
