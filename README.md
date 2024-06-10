@@ -8,14 +8,14 @@ This is an Employee Management API built using ASP.NET Core 6.0 and Blazor. The 
 - **Construction Site Management**: Manage construction sites and their assigned employees.
 - **API Key Authorization**: Secure your API endpoints with API key authorization.
 - **Swagger UI**: Test and explore the API using Swagger UI.
-- **Blazor Components**: Manage employees through a Blazor WebAssembly frontend.
+- **Blazor Components**: Manage employees through a Blazor frontend.
 
 ## Technologies Used
 
 - ASP.NET Core 6.0
 - Entity Framework Core
 - MediatR for CQRS pattern
-- Blazor WebAssembly
+- blazor web server
 - Swagger for API documentation
 - AutoMapper for object-object mapping
 
@@ -59,11 +59,11 @@ This is an Employee Management API built using ASP.NET Core 6.0 and Blazor. The 
     dotnet run
     ```
 
-    The API will be available at `https://localhost:5001`.
+    The API will be available at `https://localhost:44332/`.
 
 ### API Documentation
 
-You can explore and test the API using Swagger UI. Once the application is running, navigate to `https://localhost:5001/swagger` in your browser.
+You can explore and test the API using Swagger UI. Once the application is running, navigate to `https://localhost:44332/swagger` in your browser.
 
 ### API Key Authorization
 
@@ -95,30 +95,23 @@ To remove an employee from a construction site, use the following API endpoint:
 
 ### Blazor Frontend
 
-The Blazor frontend provides a user interface for managing employees and construction sites. The frontend can be accessed at `https://localhost:5001`.
+The Blazor frontend provides a user interface for managing employees and construction sites. The frontend can be accessed at `https://localhost:44382/`.
 
 #### Loading Employees from the API
 
-The Blazor component to list employees is located at `/Pages/EmployeeList.razor`. It loads employees from the API using the configured `HttpClient`.
+The Blazor component to list employees is located at `/Pages/ApiEmployee.razor`. It loads employees from the API using the configured `IHttpClientFactory`.
 
 ```razor
 @page "/api-employee"
-@inject HttpClient Http
-@using EmployeeBlazorApp.Components
+@inject IMediator _mediator
+@using EmployeeBlazorApp.Components;
+@inject IHttpClientFactory HttpClientFactory
 
-<h3 class="mt-4 text-center">Manage Employee</h3>
+
+<h3 class="mt-4 text-center">Api Employees</h3>
 <a class="btn btn-primary" href="add-employee">Add New Employee</a>
 
-<h3 class="mt-4 text-center">Employees</h3>
-
-@if (employees != null && employees.Any())
-{
-    <EmployeeListComponent employees="employees" />
-}
-else
-{
-    <p>No employees found.</p>
-}
+<EmployeeListComponent employees="employees" />
 
 @code {
     private List<EmployeeDTO>? employees = new();
@@ -132,10 +125,12 @@ else
     {
         try
         {
-            employees = await Http.GetFromJsonAsync<List<EmployeeDTO>>("api/employees");
+            var client = HttpClientFactory.CreateClient("ApiHttpClient");
+            employees = await client.GetFromJsonAsync<List<EmployeeDTO>>("api/GetEmployee");
         }
         catch (Exception ex)
         {
+            // Handle error (e.g., log the error, show a message to the user, etc.)
             Console.WriteLine($"Error loading employees: {ex.Message}");
         }
     }

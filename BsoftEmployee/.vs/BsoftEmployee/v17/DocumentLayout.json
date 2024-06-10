@@ -1,12 +1,7 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "C:\\Users\\mbark\\Documents\\GitHub\\Mbark_For_Build_Software\\BsoftEmployee\\",
-  "Documents": [
-    {
-      "AbsoluteMoniker": "D:0:0:{FC131FD2-6F03-407C-9BC7-0877F4486124}|BsoftEmployee.Tests\\BsoftEmployee.Tests.csproj|c:\\users\\mbark\\documents\\github\\mbark_for_build_software\\bsoftemployee\\bsoftemployee.tests\\commands\\add\\addemployeecommandtest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{FC131FD2-6F03-407C-9BC7-0877F4486124}|BsoftEmployee.Tests\\BsoftEmployee.Tests.csproj|solutionrelative:bsoftemployee.tests\\commands\\add\\addemployeecommandtest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    }
-  ],
+  "Documents": [],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
@@ -14,21 +9,8 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": -1,
           "Children": [
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "AddEmployeeCommandTest.cs",
-              "DocumentMoniker": "C:\\Users\\mbark\\Documents\\GitHub\\Mbark_For_Build_Software\\BsoftEmployee\\BsoftEmployee.Tests\\Commands\\Add\\AddEmployeeCommandTest.cs",
-              "RelativeDocumentMoniker": "BsoftEmployee.Tests\\Commands\\Add\\AddEmployeeCommandTest.cs",
-              "ToolTip": "C:\\Users\\mbark\\Documents\\GitHub\\Mbark_For_Build_Software\\BsoftEmployee\\BsoftEmployee.Tests\\Commands\\Add\\AddEmployeeCommandTest.cs",
-              "RelativeToolTip": "BsoftEmployee.Tests\\Commands\\Add\\AddEmployeeCommandTest.cs",
-              "ViewState": "AQIAADYAAAAAAAAAAAAYwEYAAAAZAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-10T14:55:01.947Z",
-              "EditorCaption": ""
-            },
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{004be353-6879-467c-9d1e-9ac23cdf6d49}"
