@@ -1,9 +1,10 @@
-﻿namespace BsoftWebAPI.Middleware;
+﻿using BsoftWebAPI.Helper;
+
+namespace BsoftWebAPI.Middleware;
 
 public class ApiKeyMiddleware
 {
     private readonly RequestDelegate _next;
-    private const string APIKEY_NAME = "API-KEY";
     private readonly IConfiguration _configuration;
 
     public ApiKeyMiddleware(RequestDelegate next, IConfiguration configuration)
@@ -14,14 +15,14 @@ public class ApiKeyMiddleware
 
     public async Task InvokeAsync(HttpContext context)
     {
-        if (!context.Request.Headers.TryGetValue(APIKEY_NAME, out var extractedApiKey))
+        if (!context.Request.Headers.TryGetValue(ApiHelper.ApiKeyName, out var extractedApiKey))
         {
             context.Response.StatusCode = 401; // Unauthorized
             await context.Response.WriteAsync("API Key was not provided.");
             return;
         }
 
-        var apiKey = _configuration.GetValue<string>(APIKEY_NAME);
+        var apiKey = _configuration.GetValue<string>(ApiHelper.ApiKeyName);
 
         if (!apiKey.Equals(extractedApiKey))
         {

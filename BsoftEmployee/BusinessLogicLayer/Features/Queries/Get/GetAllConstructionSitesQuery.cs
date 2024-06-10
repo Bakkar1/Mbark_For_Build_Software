@@ -1,5 +1,4 @@
-﻿using AutoMapper;
-using DataAccessLayer.Data;
+﻿using DataAccessLayer.Data;
 using DataAccessLayer.DTOs;
 using DataAccessLayer.Extension;
 using MediatR;
@@ -14,12 +13,10 @@ public class GetAllConstructionSitesQuery : IRequest<List<ConstructionSiteDTO>?>
 public class GetAllConstructionSitesQueryHandler : IRequestHandler<GetAllConstructionSitesQuery, List<ConstructionSiteDTO>?>
 {
     private readonly AppDbContext _context;
-    private readonly IMapper _mapper;
 
-    public GetAllConstructionSitesQueryHandler(AppDbContext context, IMapper mapper)
+    public GetAllConstructionSitesQueryHandler(AppDbContext context)
     {
         _context = context;
-        _mapper = mapper;
     }
 
     public async Task<List<ConstructionSiteDTO>?> Handle(GetAllConstructionSitesQuery request, CancellationToken cancellationToken)
