@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc.Filters;
 using Microsoft.AspNetCore.Mvc;
-using BsoftWebAPI.Helper;
+using BusinessLogicLayer.Helper;
 
 namespace BsoftWebAPI.AuthorizeAttribute;
 

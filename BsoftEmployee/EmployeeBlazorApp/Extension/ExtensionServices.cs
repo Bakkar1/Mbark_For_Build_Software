@@ -1,7 +1,7 @@
 ﻿using BusinessLogicLayer.Extension;
-using EmployeeBlazorApp.Helper;
+using BusinessLogicLayer.Helper;
 
-namespace EmployeeBlazorApp.Extension;
+namespace BusinessLogicLayer.Extension;
 public static class ExtensionServices
 {
     public static IServiceCollection AddExtensionServices(this IServiceCollection services, IConfiguration configuration)

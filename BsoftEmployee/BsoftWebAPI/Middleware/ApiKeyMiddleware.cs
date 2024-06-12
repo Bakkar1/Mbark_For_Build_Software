@@ -1,4 +1,4 @@
-﻿using BsoftWebAPI.Helper;
+﻿using BusinessLogicLayer.Helper;
 
 namespace BsoftWebAPI.Middleware;
 

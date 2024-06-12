@@ -1,18 +1,26 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using BusinessLogicLayer.Features.Commands.Delete;
+using BusinessLogicLayer.Features.Commands.Add;
 
 namespace BsoftWebAPI.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
-    public class RemoveConstructionSiteController : ControllerBase
+    public class ConstructionSiteMangeController : ControllerBase
     {
         private readonly IMediator _mediator;
 
-        public RemoveConstructionSiteController(IMediator mediator)
+        public ConstructionSiteMangeController(IMediator mediator)
         {
             _mediator = mediator;
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> CreateConstructionSite(CreateConstructionSiteCommand command)
+        {
+            var result = await _mediator.Send(command);
+            return Ok(result);
         }
 
         [HttpDelete("{id}")]

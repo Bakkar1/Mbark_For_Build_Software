@@ -6,11 +6,11 @@ namespace BsoftWebAPI.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
-    public class GetConstructionSiteController : ControllerBase
+    public class ConstructionSiteReadController : ControllerBase
     {
         private readonly IMediator _mediator;
 
-        public GetConstructionSiteController(IMediator mediator)
+        public ConstructionSiteReadController(IMediator mediator)
         {
             _mediator = mediator;
         }

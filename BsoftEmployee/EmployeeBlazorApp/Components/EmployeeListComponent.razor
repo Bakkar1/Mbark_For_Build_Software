@@ -44,7 +44,7 @@ else
         var command = new DeleteEmployeeCommand { EmployeeId = employeeId };
         var result = await _mediator.Send(command);
 
-        if (result)
+        if (result.Succeeded)
         {
             var employeeToRemove = employees.FirstOrDefault(e => e.EmployeeId == employeeId);
             if (employeeToRemove != null)

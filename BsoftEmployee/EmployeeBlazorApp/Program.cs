@@ -1,4 +1,4 @@
-using EmployeeBlazorApp.Extension;
+using BusinessLogicLayer.Extension;
 
 var builder = WebApplication.CreateBuilder(args);
 

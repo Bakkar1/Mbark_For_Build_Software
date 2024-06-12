@@ -7,16 +7,15 @@ namespace BsoftWebAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class GetEmployeeController : ControllerBase
+    public class EmployeeReadController : ControllerBase
     {
         private readonly IMediator _mediator;
 
-        public GetEmployeeController(IMediator mediator)
+        public EmployeeReadController(IMediator mediator)
         {
             _mediator = mediator;
         }
         [HttpGet]
-        [ApiKeyAuthorize]
         public async Task<IActionResult> GetAllEmployees()
         {
             var query = new GetAllEmployeesQuery();

@@ -9,6 +9,7 @@ using BusinessLogicLayer.Features.Commands.Update;
 using System.Reflection;
 using Microsoft.AspNetCore.Identity;
 using BusinessLogicLayer.Features.Queries.Get;
+using BusinessLogicLayer.Helper;
 
 namespace BusinessLogicLayer.Extension
 {
@@ -24,16 +25,16 @@ namespace BusinessLogicLayer.Extension
             // Commmands
             //Add
             services.AddTransient<IRequestHandler<CreateConstructionSiteCommand, ConstructionSiteDTO>, CreateConstructionSiteCommandHandler>();
-            services.AddTransient<IRequestHandler<AddEmployeeToSiteCommand, bool>, AddEmployeeToSiteCommandHandler>();
+            services.AddTransient<IRequestHandler<AddEmployeeToSiteCommand, BsoftResult>, AddEmployeeToSiteCommandHandler>();
             services.AddTransient<IRequestHandler<AddEmployeeCommand, IdentityResult>, AddEmployeeCommandHandler>();
 
             //Update
             services.AddTransient<IRequestHandler<UpdateConstructionSiteCommand, ConstructionSiteDTO>, UpdateConstructionSiteCommandHandler>();
 
             //Delete
-            services.AddTransient<IRequestHandler<RemoveEmployeeFromSiteCommand, bool>, RemoveEmployeeFromSiteCommandHandler>();
-            services.AddTransient<IRequestHandler<DeleteConstructionSiteCommand>, DeleteConstructionSiteCommandHandler>();
-            services.AddTransient<IRequestHandler<DeleteEmployeeCommand, bool>, DeleteEmployeeCommandHandler>();
+            services.AddTransient<IRequestHandler<RemoveEmployeeFromSiteCommand, BsoftResult>, RemoveEmployeeFromSiteCommandHandler>();
+            services.AddTransient<IRequestHandler<DeleteConstructionSiteCommand, BsoftResult>, DeleteConstructionSiteCommandHandler>();
+            services.AddTransient<IRequestHandler<DeleteEmployeeCommand, BsoftResult>, DeleteEmployeeCommandHandler>();
 
             // Queries
 

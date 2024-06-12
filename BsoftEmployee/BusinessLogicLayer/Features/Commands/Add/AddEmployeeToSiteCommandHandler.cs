@@ -1,11 +1,12 @@
-﻿using DataAccessLayer.Data;
+﻿using BusinessLogicLayer.Helper;
+using DataAccessLayer.Data;
 using DataAccessLayer.Model;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 
 namespace BusinessLogicLayer.Features.Commands.Add;
 
-public class AddEmployeeToSiteCommandHandler : IRequestHandler<AddEmployeeToSiteCommand, bool>
+public class AddEmployeeToSiteCommandHandler : IRequestHandler<AddEmployeeToSiteCommand, BsoftResult>
 {
     private readonly AppDbContext _context;
 
@@ -14,7 +15,7 @@ public class AddEmployeeToSiteCommandHandler : IRequestHandler<AddEmployeeToSite
         _context = context;
     }
 
-    public async Task<bool> Handle(AddEmployeeToSiteCommand request, CancellationToken cancellationToken)
+    public async Task<BsoftResult> Handle(AddEmployeeToSiteCommand request, CancellationToken cancellationToken)
     {
         var constructionSite = await _context.ConstructionSites
             .Include(cs => cs.ConstructionSiteEmployees)
@@ -22,14 +23,22 @@ public class AddEmployeeToSiteCommandHandler : IRequestHandler<AddEmployeeToSite
 
         if (constructionSite is null)
         {
-            return false;
+            return new BsoftResult()
+            {
+                Succeeded = false,
+                Errors = new List<string>() { $"No ConstructionSite was found with the id : {request.ConstructionSiteId}" }
+            };
         }
 
         var employee = await _context.Employees.SingleOrDefaultAsync(e => e.Id == request.EmployeeId, cancellationToken);
 
         if (employee is null)
         {
-            return false;
+            return new BsoftResult()
+            {
+                Succeeded = false,
+                Errors = new List<string>() { $"No Employee was found with the id : {request.EmployeeId}" }
+            };
         }
 
         // check conflict
@@ -40,7 +49,11 @@ public class AddEmployeeToSiteCommandHandler : IRequestHandler<AddEmployeeToSite
 
         if (conflict)
         {
-            return false;
+            return new BsoftResult()
+            {
+                Succeeded = false,
+                Errors = new List<string>() { $"The Employee with Id : {request.EmployeeId} Is Alreadt exist in the ConstructionSiteId with id : {request.ConstructionSiteId}" }
+            };
         }
 
         var constructionSiteEmployee = new ConstructionSiteEmployee
@@ -52,6 +65,10 @@ public class AddEmployeeToSiteCommandHandler : IRequestHandler<AddEmployeeToSite
 
         await _context.SaveChangesAsync(cancellationToken);
 
-        return true;
+        return new BsoftResult()
+        {
+            Succeeded = true,
+            Message = "Employee Is Added To The Site"
+        };
     }
 }

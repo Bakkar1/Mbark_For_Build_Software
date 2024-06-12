@@ -2,6 +2,7 @@
 using BusinessLogicLayer.Features.Commands.Delete;
 using BusinessLogicLayer.Features.Commands.Update;
 using BusinessLogicLayer.Features.Queries.Get;
+using BusinessLogicLayer.Helper;
 using DataAccessLayer.Data;
 using DataAccessLayer.DTOs;
 using DataAccessLayer.Enums;
@@ -45,16 +46,16 @@ namespace BsoftEmployee.Tests
             // Commmands
             //Add
             serviceCollection.AddTransient<IRequestHandler<CreateConstructionSiteCommand, ConstructionSiteDTO>, CreateConstructionSiteCommandHandler>();
-            serviceCollection.AddTransient<IRequestHandler<AddEmployeeToSiteCommand, bool>, AddEmployeeToSiteCommandHandler>();
+            serviceCollection.AddTransient<IRequestHandler<AddEmployeeToSiteCommand, BsoftResult>, AddEmployeeToSiteCommandHandler>();
             serviceCollection.AddTransient<IRequestHandler<AddEmployeeCommand, IdentityResult>, AddEmployeeCommandHandler>();
 
             //Update
             serviceCollection.AddTransient<IRequestHandler<UpdateConstructionSiteCommand, ConstructionSiteDTO>, UpdateConstructionSiteCommandHandler>();
 
             //Delete
-            serviceCollection.AddTransient<IRequestHandler<RemoveEmployeeFromSiteCommand, bool>, RemoveEmployeeFromSiteCommandHandler>();
-            serviceCollection.AddTransient<IRequestHandler<DeleteConstructionSiteCommand>, DeleteConstructionSiteCommandHandler>();
-            serviceCollection.AddTransient<IRequestHandler<DeleteEmployeeCommand, bool>, DeleteEmployeeCommandHandler>();
+            serviceCollection.AddTransient<IRequestHandler<RemoveEmployeeFromSiteCommand, BsoftResult>, RemoveEmployeeFromSiteCommandHandler>();
+            serviceCollection.AddTransient<IRequestHandler<DeleteConstructionSiteCommand, BsoftResult>, DeleteConstructionSiteCommandHandler>();
+            serviceCollection.AddTransient<IRequestHandler<DeleteEmployeeCommand, BsoftResult>, DeleteEmployeeCommandHandler>();
 
             // Queries
 

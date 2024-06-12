@@ -1,11 +1,12 @@
-﻿using DataAccessLayer.Data;
+﻿using BusinessLogicLayer.Helper;
+using DataAccessLayer.Data;
 using DataAccessLayer.Enums;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 
 namespace BusinessLogicLayer.Features.Commands.Delete;
 
-public class DeleteEmployeeCommandHandler : IRequestHandler<DeleteEmployeeCommand, bool>
+public class DeleteEmployeeCommandHandler : IRequestHandler<DeleteEmployeeCommand, BsoftResult>
 {
     private readonly AppDbContext _context;
     public DeleteEmployeeCommandHandler(AppDbContext context)
@@ -13,20 +14,48 @@ public class DeleteEmployeeCommandHandler : IRequestHandler<DeleteEmployeeComman
         _context = context;
     }
 
-    public async Task<bool> Handle(DeleteEmployeeCommand request, CancellationToken cancellationToken)
+    public async Task<BsoftResult> Handle(DeleteEmployeeCommand request, CancellationToken cancellationToken)
     {
         var employee = await _context
             .Users
             .FindAsync(request.EmployeeId);
 
-        if (employee is null || await IsEmployeeActive(employee.Id))
+        if (employee is null)
         {
-            return false;
+            return new BsoftResult()
+            {
+                Succeeded = false,
+                Errors = new List<string>() { $"No Employee was found with the id : {request.EmployeeId}" }
+            };
+        }
+        else if(await IsEmployeeActive(employee.Id))
+        {
+            return new BsoftResult()
+            {
+                Succeeded = false,
+                Errors = new List<string>() { $"The Employee Is Currently Active On At Least One Site" }
+            };
         }
 
         _context.Users.Remove(employee);
         var result = await _context.SaveChangesAsync(cancellationToken);
-        return result > 0;
+
+        if(result > 0)
+        {
+            return new BsoftResult()
+            {
+                Succeeded = true,
+                Message = "Employee Is Removed"
+            };
+        }
+        else
+        {
+            return new BsoftResult()
+            {
+                Succeeded = false,
+                Message = "Employee Is Not Removed"
+            };
+        }
     }
 
     private async Task<bool> IsEmployeeActive(string employeeId)

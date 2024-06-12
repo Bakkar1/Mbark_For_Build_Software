@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("BsoftWebAPI")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+0e9d42ea67c2fcb7f9fcf799d7fa18edfce4a947")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+6d38f2b134d6f3dc9a21b1a47e045583887308fd")]
 [assembly: System.Reflection.AssemblyProductAttribute("BsoftWebAPI")]
 [assembly: System.Reflection.AssemblyTitleAttribute("BsoftWebAPI")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

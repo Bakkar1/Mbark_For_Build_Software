@@ -22,7 +22,7 @@
         try
         {
             var client = HttpClientFactory.CreateClient("ApiHttpClient");
-            employees = await client.GetFromJsonAsync<List<EmployeeDTO>>("api/GetEmployee");
+            employees = await client.GetFromJsonAsync<List<EmployeeDTO>>("api/EmployeeRead");
         }
         catch (Exception ex)
         {
