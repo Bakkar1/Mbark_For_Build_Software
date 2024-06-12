@@ -46,6 +46,7 @@ namespace BusinessLogicLayer.Features.Queries.Get
                         })
                         .ToList(),
                 })
+                .TagWith("Get ConstructionSites")
                 .FirstOrDefaultAsync(cancellationToken);
 
             return constructionSiteDTO;

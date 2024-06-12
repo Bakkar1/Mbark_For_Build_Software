@@ -14,7 +14,9 @@ public class DeleteConstructionSiteCommandHandler : IRequestHandler<DeleteConstr
 
     public async Task<BsoftResult> Handle(DeleteConstructionSiteCommand request, CancellationToken cancellationToken)
     {
-        var constructionSite = await _context.ConstructionSites.FindAsync(request.ConstructionSiteId);
+        var constructionSite = await _context
+            .ConstructionSites
+            .FindAsync(request.ConstructionSiteId);
 
         if (constructionSite != null)
         {

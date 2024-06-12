@@ -31,6 +31,7 @@ public class GetAllConstructionSitesQueryHandler : IRequestHandler<GetAllConstru
                 EndDate = cs.EndDate.ToLongDateString(),
                 Status = cs.Status.GetDisplayName()
             })
+            .TagWith("Get All ConstructionSites")
             .ToListAsync(cancellationToken);
     }
 }

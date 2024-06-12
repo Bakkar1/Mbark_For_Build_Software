@@ -19,6 +19,7 @@ public class AddEmployeeToSiteCommandHandler : IRequestHandler<AddEmployeeToSite
     {
         var constructionSite = await _context.ConstructionSites
             .Include(cs => cs.ConstructionSiteEmployees)
+            .TagWith("Get ConstructionSites")
             .SingleOrDefaultAsync(cs => cs.ConstructionSiteId == request.ConstructionSiteId, cancellationToken);
 
         if (constructionSite is null)
@@ -30,7 +31,10 @@ public class AddEmployeeToSiteCommandHandler : IRequestHandler<AddEmployeeToSite
             };
         }
 
-        var employee = await _context.Employees.SingleOrDefaultAsync(e => e.Id == request.EmployeeId, cancellationToken);
+        var employee = await _context
+            .Employees
+            .TagWith("Get Employee")
+            .SingleOrDefaultAsync(e => e.Id == request.EmployeeId, cancellationToken);
 
         if (employee is null)
         {
@@ -44,6 +48,7 @@ public class AddEmployeeToSiteCommandHandler : IRequestHandler<AddEmployeeToSite
         // check conflict
         bool conflict = await _context
             .ConstructionSiteEmployees
+            .TagWith("Get ConstructionSiteEmployees")
             .Where(cse => cse.EmployeeId == employee.Id && cse.ConstructionSiteId == constructionSite.ConstructionSiteId )
             .AnyAsync();
 

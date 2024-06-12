@@ -61,6 +61,10 @@ This is an Employee Management API built using ASP.NET Core 6.0 and Blazor. The 
 
     The API will be available at `https://localhost:44332/`.
 
+### Ensuring Database Creation
+
+The application ensures that the database is created and migrations are applied when it runs for the first time. This is handled in the `Program.cs` file by invoking `context.Database.Migrate()`.
+
 ### API Documentation
 
 You can explore and test the API using Swagger UI. Once the application is running, navigate to `https://localhost:44332/swagger` in your browser.
@@ -93,6 +97,14 @@ To remove an employee from a construction site, use the following API endpoint:
     - `constructionSiteId`: The ID of the construction site.
     - `employeeId`: The ID of the employee to remove.
 
+### Future Enhancements
+- **Here are some features and improvements that can be added in the future:**
+
+    - Integration Testing: Add integration tests to ensure the different parts of the application work together as expected.
+    - Secret Management: Use secrets instead of appsettings.json for sensitive data. Consider using Azure Key Vault for managing secrets securely.
+    - Azure Active Directory Integration: Integrate with Azure AD for better identity management and secure access.
+    - ASP.NET Core Identity Roles: Use the built-in ASP.NET Core Identity roles for managing employee roles more effectively.
+
 ### Blazor Frontend
 
 The Blazor frontend provides a user interface for managing employees and construction sites. The frontend can be accessed at `https://localhost:44382/`.
@@ -100,7 +112,6 @@ The Blazor frontend provides a user interface for managing employees and constru
 #### Loading Employees from the API
 
 The Blazor component to list employees is located at `/Pages/ApiEmployee.razor`. It loads employees from the API using the configured `IHttpClientFactory`.
-
 ```razor
 @page "/api-employee"
 @inject IMediator _mediator
@@ -126,7 +137,7 @@ The Blazor component to list employees is located at `/Pages/ApiEmployee.razor`.
         try
         {
             var client = HttpClientFactory.CreateClient("ApiHttpClient");
-            employees = await client.GetFromJsonAsync<List<EmployeeDTO>>("api/GetEmployee");
+            employees = await client.GetFromJsonAsync<List<EmployeeDTO>>("api/EmployeeRead");
         }
         catch (Exception ex)
         {

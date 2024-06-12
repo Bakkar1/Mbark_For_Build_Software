@@ -10,6 +10,17 @@
     <div class="container mt-5">
         <div class="row">
             <div class="col-md-6 offset-md-3">
+                @if (errors.Any())
+                {
+                    <div class="alert alert-danger">
+                        <ul>
+                            @foreach (var error in errors)
+                            {
+                                <li>@error</li>
+                            }
+                        </ul>
+                    </div>
+                }
                 <div class="mb-3">
                     <label for="firstName" class="form-label">First Name</label>
                     <InputText @bind-Value="employeeModel.FirstName" class="form-control" id="firstName" />
@@ -39,9 +50,11 @@
 
 @code {
     private CreateEmployeeDTO employeeModel = new();
+    private List<string> errors = new();
 
     private async Task AddDotNetEmployee()
     {
+        errors.Clear(); // Clear previous errors
         var command = new AddEmployeeCommand { Employee = employeeModel };
         var result = await _mediator.Send(command);
 
@@ -53,8 +66,8 @@
         {
             foreach (var error in result.Errors)
             {
-                // Handle the error (display to employee, log, etc.)
-                Console.WriteLine(error.Description);
+                // Add error to the list to be displayed
+                errors.Add(error.Description);
             }
         }
     }

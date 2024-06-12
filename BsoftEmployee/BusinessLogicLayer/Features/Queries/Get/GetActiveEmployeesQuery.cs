@@ -35,6 +35,7 @@ namespace BusinessLogicLayer.Features.Queries.Get
                     Name = e.FirstName,
                     Role = e.Role.GetDisplayName(),
                 })
+                .TagWith("Get Active Employees")
                 .ToListAsync();
 
             return employees;

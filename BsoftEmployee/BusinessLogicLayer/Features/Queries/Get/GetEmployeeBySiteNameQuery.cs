@@ -41,8 +41,9 @@ namespace BusinessLogicLayer.Features.Queries.Get
                     EmployeeId = e.Id,
                     Name = e.FirstName,
                     Role = e.Role.GetDisplayName(),
-                    
+                    Sites = e.ConstructionSiteEmployees.Select(cse => cse.ConstructionSite.Name).ToList()
                 })
+                .TagWith("Get Employees By Site Name")
                 .ToListAsync();
 
             return employees;

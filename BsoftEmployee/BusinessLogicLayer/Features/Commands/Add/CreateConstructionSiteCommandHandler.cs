@@ -20,7 +20,7 @@ public class CreateConstructionSiteCommandHandler : IRequestHandler<CreateConstr
     {
         if(request.ConstructionSite is null || string.IsNullOrEmpty(request.ConstructionSite?.Name))
         {
-            // Handle not found
+            throw new ArgumentException("Construction site name cannot be null or empty.");
         }
         var constructionSite = _mapper.Map<ConstructionSite>(request.ConstructionSite);
 

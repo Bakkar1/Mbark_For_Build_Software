@@ -31,8 +31,10 @@ public class GetEmployeeByIdQueryHandler : IRequestHandler<GetEmployeeByIdQuery,
             {
                 EmployeeId = e.Id,
                 Name = e.FirstName,
-                Role = e.Role.GetDisplayName()
+                Role = e.Role.GetDisplayName(),
+                Sites = e.ConstructionSiteEmployees.Select(cse => cse.ConstructionSite.Name).ToList()
             })
+            .TagWith("Get Employee By Id")
             .SingleOrDefaultAsync();
     }
 }
